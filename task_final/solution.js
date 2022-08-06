@@ -34,12 +34,16 @@
 // }
 
 function sendRequest(name, phone, address, goods, sum, title, count) {
-    let data = {client: `${name + phone} `, goods: [{title, count}], order: {}};
+    let data = {goods: [], order: {}};
 
-    let countOfGoods = goods.length - 1;
+    let countOfGoods = goods.length;
+    let objGoods = {};
 
     for (let i = 0; i < countOfGoods; i += 1) {
-        data.goods.push(goods[i]);
+        objGoods = goods[i].title; //каким методом добавлять значения в объект?
+        objGoods = goods[i].count;
+        data.goods.push(objGoods);
+
     }
 
     data.order.address = `${"ул. " + address.street + ", дом " + address.house + ", " + address.entrance + " подъезд, " + address.floor + " этаж, кв " + address.flat}`
